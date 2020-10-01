@@ -134,11 +134,12 @@ const cardMaker = (data) => {
 
   titleName.textContent = data.name;
   userName.textContent = data.login;
-  location.textContent = data.location;
+  location.textContent = "Location: " + data.location;
+  profile.textContent = "Profile: ";
   profileAnchor.textContent = data.url;
-  followers.textContent = data.followers;
-  following.textContent = data.following;
-  bio.textContent = data.bio;
+  followers.textContent = "Followers" + data.followers;
+  following.textContent = "Following: " + data.following;
+  bio.textContent = "Bio: " + data.bio;
 
   entireCard.appendChild(cardImg);
   entireCard.appendChild(cardInfo);
