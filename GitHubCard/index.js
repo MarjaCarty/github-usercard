@@ -16,6 +16,37 @@ axios
     console.log(err);
   });
 
+/////////////////////////Stretch//////////////////////////////
+
+const followerCards = (username) => {
+  const follows = [];
+
+  axios
+    .get(`https://api.github.com/users/${username}/followers`)
+    .then((res) => {
+      res.data.forEach((person) => {
+        follows.push(person.login);
+      });
+      follows.forEach((follower) => {
+        let newURL = `https://api.github.com/users/${follower}`;
+        axios
+          .get(newURL)
+          .then((res) => {
+            let newCard = cardMaker(res.data);
+            document.querySelector(".cards").appendChild(newCard);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+followerCards("MarjaCarty");
+
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
