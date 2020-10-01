@@ -1,3 +1,5 @@
+import axios from "axios";
+
 /*
   STEP 1: using axios, send a GET request to the following URL
     (replacing the placeholder with your Github name):
@@ -49,6 +51,48 @@ const followersArray = [];
       </div>
     </div>
 */
+
+const cardMaker = (data) => {
+  const entireCard = document.createElement("div");
+  const cardImg = document.createElement("img");
+  const cardInfo = document.createElement("div");
+  const titleName = document.createElement("h3");
+  const userName = document.createElement("p");
+  const location = document.createElement("p");
+  const profile = document.createElement("p");
+  const profileAnchor = document.createElement("a");
+  const followers = document.createElement("p");
+  const following = document.createElement("p");
+  const bio = document.createElement("p");
+
+  entireCard.classList.add("card");
+  cardImg.src = data.avatar_url;
+  cardInfo.classList.add("card-info");
+  titleName.classList.add("name");
+  userName.classList.add("username");
+  profileAnchor.href = data.url;
+
+  titleName.textContent = data.name;
+  userName.textContent = data.login;
+  location.textContent = data.location;
+  profileAnchor.textContent = data.url;
+  followers.textContent = data.followers;
+  following.textContent = data.following;
+  bio.textContent = data.bio;
+
+  entireCard.appendChild(cardImg);
+  entireCard.appendChild(cardInfo);
+  cardInfo.appendChild(titleName);
+  cardInfo.appendChild(userName);
+  cardInfo.appendChild(location);
+  cardInfo.appendChild(profile);
+  profile.appendChild(profileAnchor);
+  cardInfo.appendChild(followers);
+  cardInfo.appendChild(following);
+  cardInfo.appendChild(bio);
+
+  console.log(entireCard);
+};
 
 /*
   List of LS Instructors Github username's:
