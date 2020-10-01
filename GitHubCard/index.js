@@ -6,6 +6,16 @@ import axios from "axios";
     https://api.github.com/users/<your name>
 */
 
+axios
+  .get("https://api.github.com/users/MarjaCarty")
+  .then((res) => {
+    let newCard = cardMaker(res.data);
+    document.querySelector(".cards").appendChild(newCard);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
@@ -91,7 +101,7 @@ const cardMaker = (data) => {
   cardInfo.appendChild(following);
   cardInfo.appendChild(bio);
 
-  console.log(entireCard);
+  return entireCard;
 };
 
 /*
